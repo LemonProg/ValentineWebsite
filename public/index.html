@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Saint-Valentin</title>
+    <link rel="stylesheet" href="dist/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+
+    <link rel="manifest" href="manifest.json">
+</head>
+<body class="bg-flowers min-h-screen flex place-items-center place-content-center flex-col touch-none">
+    <div class="flex flex-col">
+        <img src="img/catflower.jpg" id="image">
+        <h1 class="font-lover1 text-[50px] font-bold text-center text-pink-500">Hey, jolie fille!</h1>
+    </div>
+
+    <h2 class="font-arial text-[30px] font-bold text-center text-pink-500">Veux tu être ma Valentine?</h2>
+
+    <div class="fixed bottom-[80px] left-[85px]">
+        <button class="bg-pink-500 font-single_day text-3xl p-5 pt-2 pb-2 text-white" onclick="window.location.href = '/yes'">OUI</button>
+    </div>
+    <div class="fixed bottom-[80px] right-[85px] h-min w-min" id="non-div">
+        <button class="bg-pink-500 font-single_day text-3xl p-5 pt-2 pb-2 text-white" id="btn-no">NON</button>
+    </div>
+
+    <script>
+        const no_btn = document.querySelector('#btn-no');
+        const non_div = document.querySelector('#non-div');
+        const img = document.querySelector('#image')
+        const h1 = document.querySelector('h1')
+        const h2 = document.querySelector('h2')
+
+        no_btn.addEventListener('click', () => {
+            let w = window.innerWidth - no_btn.offsetWidth;
+            let h = window.innerHeight - no_btn.offsetWidth;
+
+            const randomX = Math.max(0, Math.floor(Math.random() * w));
+            const randomY = Math.max(0, Math.floor(Math.random() * h));
+
+            h1.textContent = ""
+            h2.textContent = "Essaie encore de refuser 😂"
+            h2.style.marginTop = "15px"
+            h2.style.width = "350px"
+
+            img.src = "img/gun.gif"
+            img.style.width = "300px"
+
+            non_div.style.left = randomX + "px";
+            non_div.style.top = randomY + "px";
+        })
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=none">
+    <title>Document</title>
+    <link rel="stylesheet" href="dist/output.css">
+</head>
+<body class="bg-flowers min-h-screen flex place-items-center place-content-center flex-col gap-10 touch-none">
+    <div class="flex flex-col">
+        <img src="img/dance.gif" class="w-[300px]">
+    </div>
+    <h1 style="width: 300px;" class="font-arial text-[20px] font-extrabold text-center text-pink-500">PARFAITTT, prépare toi pour le 14 bisous 😘😘</h1>
+
+    <button class="fixed bottom-[100px] bg-pink-500 font-lover2 text-3xl p-5 pt-2 pb-2 text-white" onclick="send()">SEND LOVE!</button>
+
+    <script>
+        function send() {
+            navigator
+                .share({
+                    title: "LOVE",
+                    text: "Je t'aime l'amour de ma vie!"
+                })
+                .then(() => console.log("Shared!"))
+                .catch(err => alert(err));
+        }
+    </script>
+</body>
+</html>
